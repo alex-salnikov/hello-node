@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <title>Hello Node.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+</head>
+<body>
+    <p>response from server: <b id="result">...</b></p>
+<script>
+    $.ajax({
+        url: '/app/hello',
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify({
+            name: 'Node.js'
+        }),
+        success: function(response) {              
+            console.log("Response: " + JSON.stringify(response))
+            $('#result').text(response.message)
+        },
+        error: function(request, error) {
+            console.error("Request: " + JSON.stringify(request))
+        }
+    });
+</script>
+</body>
